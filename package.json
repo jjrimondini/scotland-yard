@@ -1,0 +1,16 @@
+{
+  "name": "nerapoli",
+  "version": "1.0.0",
+  "description": "Nerapoli: caccia al Ghigno. Gioco di inseguimento a movimento nascosto con tabellone su PC e controller sui telefoni.",
+  "main": "server.js",
+  "private": true,
+  "scripts": {
+    "start": "node server.js",
+    "test": "node --test"
+  },
+  "dependencies": {
+    "express": "^4.21.2",
+    "qrcode": "^1.5.4",
+    "socket.io": "^4.8.1"
+  }
+}

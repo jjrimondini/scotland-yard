@@ -1,0 +1,20 @@
+.district-label {
+  font: 700 34px Georgia, 'Times New Roman', serif;
+  letter-spacing: 8px;
+  fill: rgba(255, 255, 255, 0.07);
+  pointer-events: none;
+}
+.district-label.small { font-size: 18px; letter-spacing: 4px; fill: rgba(255, 255, 255, 0.18); }
+.node { cursor: pointer; }
+.node-label { font: 700 13px system-ui, sans-serif; fill: #111; pointer-events: none; }
+.piece { transition: transform 0.8s cubic-bezier(0.5, 0, 0.2, 1); pointer-events: none; }
+.piece-label { font: 800 16px system-ui, sans-serif; pointer-events: none; }
+.piece.active circle { stroke: #9cff57; animation: pulse-stroke 1.2s ease-in-out infinite; }
+@keyframes pulse-stroke { 50% { stroke-width: 9; } }
+.hl { fill: rgba(156, 255, 87, 0.25); stroke: #9cff57; stroke-width: 4; cursor: pointer; }
+.hl.selected { fill: rgba(156, 255, 87, 0.7); stroke: #fff; }
+.hl.mine { fill: none; stroke: #fff; stroke-dasharray: 6 5; }
+.ghigno-ring { fill: rgba(156, 255, 87, 0.12); stroke: #9cff57; stroke-width: 5; stroke-dasharray: 10 7; animation: spin 8s linear infinite; }
+@keyframes spin { to { transform: rotate(360deg); } }
+.ghigno-mark-label { font: 700 20px Georgia, serif; fill: #9cff57; paint-order: stroke; stroke: #000; stroke-width: 5px; }
+.ghigno-path { stroke: #9cff57; stroke-width: 7; stroke-dasharray: 2 12; stroke-linecap: round; opacity: 0.95; }

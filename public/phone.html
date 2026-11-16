@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="it">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#0b0c10">
+  <title>Nerapoli</title>
+  <link rel="stylesheet" href="/shared/map.css">
+  <link rel="stylesheet" href="/phone.css">
+</head>
+<body>
+  <header class="top">
+    <span class="logo">NERAPOLI</span>
+    <span id="me" class="me"></span>
+    <span id="conn" class="conn off" title="Connessione"></span>
+  </header>
+
+  <!-- Ingresso -->
+  <section id="screen-join" class="screen hidden">
+    <h1>Chi sei, stanotte?</h1>
+    <label class="field">Nome
+      <input id="name" maxlength="20" autocomplete="nickname" placeholder="Il tuo nome">
+    </label>
+    <div class="roles">
+      <button class="role-btn" data-role="detective">
+        <b>Detective</b><span>Bracca il Ghigno per le strade di Nerapoli.</span>
+      </button>
+      <button class="role-btn ghigno" data-role="ghigno">
+        <b>Il Ghigno</b><span>Muoviti nell'ombra. Nessuno deve trovarti.</span>
+      </button>
+    </div>
+    <p id="join-error" class="error"></p>
+  </section>
+
+  <!-- Lobby -->
+  <section id="screen-lobby" class="screen hidden">
+    <h1 id="lobby-title"></h1>
+    <p class="muted">In attesa che la partita inizi dal tabellone…</p>
+    <ul id="lobby-list" class="list"></ul>
+    <button id="leave-btn" class="ghost">Cambia nome o ruolo</button>
+  </section>
+
+  <!-- Spettatore -->
+  <section id="screen-spectator" class="screen hidden">
+    <h1>Partita in corso</h1>
+    <p class="muted">Questa partita è già iniziata. Potrai unirti alla prossima: guarda il tabellone!</p>
+  </section>
+
+  <!-- Gioco -->
+  <section id="screen-game" class="screen game hidden">
+    <div id="turn-card" class="turn-card"></div>
+
+    <div id="secret" class="secret hidden"></div>
+    <div id="my-pieces"></div>
+
+    <div id="moves-panel" class="moves-panel hidden">
+      <label id="double-wrap" class="double hidden">
+        <input type="checkbox" id="double"> Usa una <b>doppia mossa</b> (<span id="double-left"></span> rimaste)
+      </label>
+      <h2>Dove vuoi andare?</h2>
+      <ul id="moves" class="moves"></ul>
+    </div>
+
+    <div class="map-tools">
+      <span class="muted">Mappa</span>
+      <button id="zoom-out" class="small">−</button>
+      <button id="zoom-in" class="small">+</button>
+      <button id="center" class="small">Centra</button>
+    </div>
+    <div id="map-box" class="map-box"><svg id="map"></svg></div>
+
+    <details id="log-box" class="log-box hidden">
+      <summary>Il tuo percorso segreto</summary>
+      <ol id="my-log"></ol>
+    </details>
+
+    <div id="over" class="over hidden"></div>
+  </section>
+
+  <div id="confirm" class="confirm hidden">
+    <span id="confirm-text"></span>
+    <button id="confirm-cancel" class="ghost">Annulla</button>
+    <button id="confirm-ok" class="primary">Conferma</button>
+  </div>
+
+  <div id="toast" class="toast hidden"></div>
+
+  <script src="/socket.io/socket.io.js"></script>
+  <script src="/shared/map-render.js"></script>
+  <script src="/phone.js"></script>
+</body>
+</html>

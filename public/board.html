@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="it">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Nerapoli — Tabellone</title>
+  <link rel="stylesheet" href="/shared/map.css">
+  <link rel="stylesheet" href="/board.css">
+</head>
+<body>
+  <main class="layout">
+    <section class="map-wrap">
+      <svg id="map" preserveAspectRatio="xMidYMid meet"></svg>
+      <div id="banner" class="banner hidden"></div>
+    </section>
+
+    <aside class="side">
+      <header class="brand">
+        <h1>NERAPOLI</h1>
+        <p>caccia al Ghigno</p>
+      </header>
+
+      <div class="status">
+        <div class="round"><span id="round">0</span><small>/ 24</small></div>
+        <div class="turn" id="turn">In attesa dei giocatori…</div>
+      </div>
+
+      <section class="panel">
+        <h2>Registro del Ghigno</h2>
+        <div class="ghigno-tickets" id="ghigno-tickets"></div>
+        <ol class="log" id="log"></ol>
+      </section>
+
+      <section class="panel">
+        <h2>Detective</h2>
+        <ul class="detectives" id="detectives"></ul>
+      </section>
+
+      <footer class="side-footer">
+        <div class="legend">
+          <span><i style="background:var(--auto)"></i>Auto</span>
+          <span><i style="background:var(--tram)"></i>Tram</span>
+          <span><i style="background:var(--metro)"></i>Metro</span>
+          <span><i style="background:var(--ferry)"></i>Traghetto</span>
+        </div>
+        <button id="end-btn" class="ghost">Termina partita</button>
+      </footer>
+    </aside>
+  </main>
+
+  <div id="lobby" class="overlay hidden">
+    <div class="card lobby-card">
+      <h1>NERAPOLI</h1>
+      <p class="tag">La città dorme. Il Ghigno no.</p>
+      <div class="lobby-grid">
+        <div class="join">
+          <img id="qr" alt="QR code per entrare">
+          <p>Inquadra con il telefono<br>oppure apri</p>
+          <code id="join-url">…</code>
+          <p class="hint" id="other-urls"></p>
+        </div>
+        <div class="who">
+          <h2>Giocatori</h2>
+          <ul id="lobby-players" class="lobby-players"></ul>
+          <label class="det-count">Pedine detective
+            <select id="num-det"></select>
+          </label>
+          <p class="hint" id="lobby-hint"></p>
+          <button id="start-btn" class="primary" disabled>Inizia partita</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="gameover" class="overlay hidden">
+    <div class="card over-card">
+      <h1 id="over-title"></h1>
+      <p id="over-reason"></p>
+      <p class="hint">Il percorso del Ghigno è tracciato sulla mappa.</p>
+      <div class="over-actions">
+        <button id="show-map-btn" class="ghost">Guarda la mappa</button>
+        <button id="new-btn" class="primary">Nuova partita</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="/socket.io/socket.io.js"></script>
+  <script src="/shared/map-render.js"></script>
+  <script src="/board.js"></script>
+</body>
+</html>
